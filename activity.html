@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="text">
+        <p id="tx">welcome to our session 1</p>
+        <p id="ca">welcome to our session 2</p>
+        <p id="txt">old paragraph to be removed or replaced</p>
+    </div>
+    
+    <input type="text" id="input" placeholder="UserName">
+    
+    <ul class="menue">
+        <li>Original Item</li>
+    </ul>
+
+    <script>
+        // 1. Traversing through elements
+        let div = document.querySelector(".text");
+        console.log(div.lastElementChild); 
+        
+        let tx = document.getElementById("tx");
+        console.log(tx.parentNode); 
+        console.log(tx.previousElementSibling); 
+        console.log(tx.nextElementSibling); 
+
+        // 2. Accessing Content
+        let txtContent = document.getElementById("tx").innerHTML;
+        console.log(txtContent);
+        console.log(tx.textContent); 
+        console.log(tx.innerText); 
+
+        // Parent container content
+        let par = document.querySelector(".text");
+        console.log(par.textContent); 
+        console.log(par.innerText); 
+
+        // 3. Changing HTML Content
+        let change = document.getElementById("ca");
+        change.innerHTML = "<h1> welcome to our class CA242</h1>"; 
+        change.textContent = "New text assigned"; 
+
+        // 4. Attributes (get, set, has, remove)
+        let inputbox = document.getElementById("input");
+        console.log(inputbox.getAttribute("placeholder")); 
+        inputbox.setAttribute("class", "ca242"); 
+        console.log(inputbox.hasAttribute("placeholder")); 
+        inputbox.removeAttribute("placeholder"); 
+
+        // 5. Create & Style Elements
+        let newel = document.createElement("div");
+        newel.innerHTML = "<p>This is the new element content</p>";
+        document.body.appendChild(newel); 
+        newel.style.color = "green"; 
+
+        // List Operations
+        let menu = document.querySelector(".menue");
+        let list = document.createElement("li");
+        list.textContent = "Calculus";
+        menu.appendChild(list); 
+        menu.insertAdjacentElement("afterbegin", list); 
+
+        // 6. Remove & Replace
+        // Remove
+        let elementToRem = document.getElementById("txt");
+        if(elementToRem) {
+            elementToRem.remove();
+        }
+
+        // Replace
+        let oldpara = document.getElementById("tx"); 
+        let newpara = document.createElement("p");
+        newpara.innerHTML = "This is the newly replaced text";
+        
+        if(oldpara && oldpara.parentNode) {
+            oldpara.parentNode.replaceChild(newpara, oldpara);
+        }
+    </script>
+</body>
+</html>
